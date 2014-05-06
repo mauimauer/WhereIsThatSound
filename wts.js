@@ -1,8 +1,8 @@
-String.prototype.hashCode = function(){
+function hashCode(str){
 	var hash = 0;
-	if (this.length == 0) return hash;
-	for (i = 0; i < this.length; i++) {
-		char = this.charCodeAt(i);
+	if (str.length == 0) return hash;
+	for (i = 0; i < str.length; i++) {
+		char = str.charCodeAt(i);
 		hash = ((hash<<5)-hash)+char;
 		hash = hash & hash; // Convert to 32bit integer
 	}
@@ -126,7 +126,7 @@ $(function() {
 		win.postMessage(EXT_ID+"::"+JSON.stringify({
 			recipient: "top",
 			sender: "iframe",
-			id: window.location.href.hashCode(),
+			id: hashCode(window.location.href),
 			event: "playing"
 		}), "*");
 	};
@@ -141,14 +141,14 @@ $(function() {
 		win.postMessage(EXT_ID+"::"+JSON.stringify({
 			recipient: "top",
 			sender: "iframe",
-			id: window.location.href.hashCode(),
+			id: hashCode(window.location.href),
 			event: "paused"
 		}), "*");
 	};
 
 	$("video").each(function(idx) {
 		var elem = $(this);
-		elem.bind("play", function() { playListener(); });
-		elem.bind("pause", function() { pauseListener(); });
+		elem.bind("play", playListener);
+		elem.bind("pause", pauseListener);
 	});
 });
