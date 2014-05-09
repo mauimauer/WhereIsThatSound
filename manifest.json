@@ -1,9 +1,13 @@
 {
 	"name": "Where's that Sound?",
 	"version": "0.0.1",
+	"author": "Sebastian Mauer",
+	"icons": { "16": "icon16.png",
+           "48": "icon48.png",
+          "128": "icon128.png" },
 	"content_scripts": [
 		{
-			"matches": [ "http://*/*", "https://*/*" ],
+			"matches": [ "http://plus.google.com/*", "https://plus.google.com/*" ],
 			"css": [ "wts.css" ],
 			"all_frames": true,
 			"js": [ "jquery.js", "wts.js" ]
