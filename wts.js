@@ -90,6 +90,7 @@ function initScrollListener() {
 	$(document).bind('DOMSubtreeModified', function() {
 	    if($(document).height() != height) {
 	    	height = $(document).height();
+	    	//addVideoListener();
 	        recalibrate();
 	    }
 	});
@@ -116,7 +117,10 @@ $(function() {
 		initScrollListener();
 	}
 
-	var playListener = function(){
+	addVideoListener();
+});
+
+var playListener = function(){
 		var win;
 		if(inIframe()) {
 			win = window.parent;
@@ -146,9 +150,10 @@ $(function() {
 		}), "*");
 	};
 
+function addVideoListener() {
 	$("video").each(function(idx) {
 		var elem = $(this);
 		elem.bind("play", playListener);
 		elem.bind("pause", pauseListener);
 	});
-});
+}

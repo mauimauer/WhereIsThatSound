@@ -7,7 +7,7 @@
           "128": "icon128.png" },
 	"content_scripts": [
 		{
-			"matches": [ "http://plus.google.com/*", "https://plus.google.com/*" ],
+			"matches": [ "http://plus.google.com/*", "https://plus.google.com/*", "http://*.youtube.com/*", "https://*.youtube.com/*" ],
 			"css": [ "wts.css" ],
 			"all_frames": true,
 			"js": [ "jquery.js", "wts.js" ]
